@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 class Cliente {
     private String nome;
@@ -70,12 +71,18 @@ public class Fintech {
         double rendaAnual = scanner.nextDouble();
         scanner.nextLine(); // Limpa o buffer do scanner
 
-        String numeroConta = "CB" + numeroConta; // Gera o número da conta bancária
+
+        //gera um numero aleatorio pra conta
+        Random random = new Random();
+        int limiteSuperior = 100; // Limite do tamanho do numero
+        int numeroAleatorioLimitado = random.nextInt(limiteSuperior);
+
+        String numeroConta = "CB" + numeroAleatorioLimitado; // Gera o número da conta bancária
         clientes.add(new Cliente(nome, rendaAnual, numeroConta));
 
         System.out.println("Cliente cadastrado com sucesso! Número da conta: " + numeroConta);
 
-        numeroConta++; // Incrementa o número da conta para o próximo cliente
+        numeroConta = numeroConta + 1; // Incrementa o número da conta para o próximo cliente
     }
 
     private static void verClientes() {
